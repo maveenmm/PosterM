@@ -22,7 +22,7 @@ accent_colour: "#000033"
 
 output: 
   posterdown::posterdown_betterport:
-    self_contained: false
+    self_contained: true
     pandoc_args: --mathjax
     number_sections: false
 
