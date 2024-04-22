@@ -1,0 +1,236 @@
+---
+main_topsize: 0.2 
+main_bottomsize: 0.1
+
+title: '**Gender Equality**'
+author:
+  - name: '**Maveen Mallah**'
+    affil: 1
+    main: true
+    email: mm3664a@american.edu
+affiliation:
+  - num: 1
+    address: School of International Service (SIS), American University
+    
+main_findings:
+  - "The Global Gender Gap Index 2006-2023"
+logocenter_name: https&#58;//www.american.edu/ucm/images/AU_stacked_logo.png
+
+primary_colour: "#000033"
+secondary_colour: "#000033"
+accent_colour: "#000033"
+
+output: 
+  posterdown::posterdown_betterport:
+    self_contained: false
+    pandoc_args: --mathjax
+    number_sections: false
+
+bibliography: packages.bib
+link-citations: true
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      tidy = FALSE,
+                      message = FALSE,
+                      fig.align = 'center',
+                      out.width = "100%")
+options(knitr.table.format = "html") 
+```
+
+```{r, include=FALSE}
+knitr::write_bib(c('posterdown', 'rmarkdown','pagedown'), 'packages.bib')
+```
+
+```{r}
+library(readr)
+library(tidyverse)
+library(posterdown)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(knitr)
+library(kableExtra)
+library(stargazer)
+library(modelsummary)
+library(gt)
+```
+
+```{r, include=FALSE}
+data = read_csv('https://www.qogdata.pol.gu.se/data/qog_oecd_cs_jan24.csv')
+sldata = data |> 
+  select(cname, gggi_eas, gggi_ggi, gggi_hss, gggi_pes, gggi_pos, gii_gii) |> 
+  na.omit()
+```
+
+# Abstract
+**Research Question:** Does the Gender Inequality Index (GII) serve as a reliable predictor of gender disparities, as measured by the Global Gender Gap Index (GGGI), across countries?
+
+**Methodology:** This study utilized data from the Quality of Government Institute and the United Nations Development Program to investigate gender inequality through the Global Gender Gap Index (GGGI). The dataset comprised 153 countries, with a random sample of 38 countries being analyzed. Descriptive statistics and visualizations were employed to explore the distribution and trends in both the Gender Inequality Index (GII) and the Global Gender Gap Index (GGGI).
+
+**Major Findings:** The findings from these visuals collectively support the notion that the Gender Inequality Index (GII) serves as a reliable predictor of gender disparities, as measured by the Global Gender Gap Index (GGGI), across countries. The linear relationship observed, along with the insights gained from the comparative overview and specific examination of educational attainment disparities, reinforces the significance of the GII in understanding and addressing gender inequality on a global scale.
+
+# Methods/ Data
+
+- Overall, the study employed a combination of data analysis techniques, including descriptive statistics and data visualization, to examine gender inequality using the GGGI across selected countries. The findings aimed to contribute to a better understanding of the current state of gender equality and inform efforts to address gender disparities in various domains.
+
+# Results
+**Gender Inequality Index (GII) and the Global Gender Gap Index (GGGI)**
+
+- The Gender Inequality Index (GII) variable "gii_gii" quantifies gender disparities in reproductive health, empowerment, and economic status, indicating greater inequality with higher values. The Global Gender Gap Index (GGGI) variable "ggi_ggi" assesses gender disparities across Economic Participation and Opportunity, Educational Attainment, Health and Survival, and Political Empowerment categories. 
+
+- The graph displays a linear relationship between "gii_gii" and "ggi_ggi", suggesting that as gender inequality measured by GII increases, gender disparities measured by GGGI also tend to increase.
+
+```{r, include =TRUE}
+graph1 = ggplot(sldata, aes(x = gii_gii, y = gggi_ggi)) +
+  geom_point(color = "powderblue", size = 3) +  
+  geom_smooth(method = "lm", se = FALSE, color = "navy") + 
+  labs(title = "Comparison of Gender Inequality Index and Global Gender Gap Index",
+       x = "Gender Inequality Index",
+       y = "Global Gender Gap Index") +
+theme_minimal() +
+theme(axis.text.y = element_text(size = 8, color = "black", family = "Times"),  
+      axis.text.x = element_text(size = 8, color = "black", family = "Times"),
+      plot.title = element_text(hjust = 0.5, color = "black", family = "Times"), 
+      axis.title.y = element_text(color = "black", family = "Times"),  
+      axis.title.x = element_text(color = "black", family = "Times"),  
+      axis.line.x = element_line(color = "black"),
+      axis.line.y = element_line(color = "black"),
+      axis.ticks.x = element_line(color = "black"), 
+      axis.ticks.length.x = unit(0.1, "cm"), 
+      axis.ticks.y = element_line(color = "black"), 
+      axis.ticks.length.y = unit(0.1, "cm"),
+      panel.grid.major = element_blank(),  
+      panel.grid.minor = element_blank()) 
+
+print(graph1)
+```
+
+```{r, include = TRUE}
+
+library(knitr)
+library(dplyr)
+
+lm_model = lm(gggi_ggi ~ gii_gii, data = sldata)
+
+kable(summary(lm_model)$coefficients, caption = "Linear Regression Summary") |>
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+**Global Gender Gap Index (GGGI):**
+
+- The Global Gender Gap Index (GGGI) utilizes four variables, including Economic Participation and Opportunity "gggi_pos", Educational Attainment "gggi_eas", Health and Survival "gggi_hss", and Political Empowerment "gggi_pes", to assess country progress towards gender parity across thematic dimensions. 
+
+- The graph provides a comparative overview of gender gaps across countries, illustrating variations in gender disparities in Economic Participation and Opportunity, Educational Attainment, Health and Survival, and Political Empowerment categories.
+
+```{r, include = TRUE}
+category_data = data.frame(
+  category = c("Economic Participation and Opportunity", "Educational Attainment", "Health and Survival", "Political Empowerment"),
+  index_value = c(mean(data$gggi_pos), mean(data$gggi_eas), mean(data$gggi_hss), mean(data$gggi_pes)))
+
+graph3 = ggplot(category_data, aes(x = category, y = index_value, fill = category)) +
+  geom_bar(stat = "identity") +
+  scale_fill_manual(values = c("Economic Participation and Opportunity" = "royalblue", 
+                               "Educational Attainment" = "royalblue4", 
+                               "Health and Survival" = "skyblue4", 
+                               "Political Empowerment" = "steelblue4")) +
+  labs(title = "Global Gender Gap Index",
+       x = NULL,
+       y = "Index Value", 
+       fill = "Category") +
+  scale_y_continuous (expand = expansion(mult = c(0, 0.01))) +
+  theme_minimal() +
+  theme(axis.text.x = element_blank(),
+        axis.text.y = element_text(size = 8, color = "black", family = "Times"),  
+        axis.title.y = element_text(color = "black", family = "Times"),  
+        plot.title = element_text(hjust = 0.5, color = "black", family = "Times"),
+        legend.title = element_text(color = "black", family = "Times"),
+        legend.title.align = 0.5,
+        legend.text = element_text(family = "Times"),  
+        panel.grid.major = element_blank(),  
+        panel.grid.minor = element_blank(),  
+        axis.line.y = element_line(color = "black"),
+        axis.line.x = element_line(color = "black"),
+        axis.ticks.y = element_line(color = "black"), 
+        axis.ticks.length.y = unit(0.1, "cm"))
+
+print(graph3)
+```
+
+```{r, include =TRUE}
+  ggindex = sldata |>
+    summarise(
+      Min = min(gggi_ggi, na.rm = TRUE),
+      Q1 = quantile(gggi_ggi, 0.25, na.rm = TRUE),
+      Median = median(gggi_ggi, na.rm = TRUE),
+      Mean = mean(gggi_ggi, na.rm = TRUE),
+      Q3 = quantile(gggi_ggi, 0.75, na.rm = TRUE),
+      Max = max(gggi_ggi, na.rm = TRUE))
+   kable(ggindex, format = "markdown", caption = "Summary Statistics of Global Gender Gap Index")
+```
+
+**Educational Attainment Subindex:**
+
+- The Educational Attainment Subindex, represented by the variable "ggi_eas", highlights the disparity between women and men in current access to education, including ratios of women to men in primary-, secondary-, and tertiary-level education. Additionally, it provides a long-term perspective on a country's ability to educate both genders equally through the ratio of female literacy rate to male literacy rate.
+
+- The graph compares the Educational Attainment Subindex scores of selected outliers (Turkey, Korea, Japan, and New Zealand), allowing for easy identification of variations and patterns in gender disparities in educational attainment across these countries.
+
+```{r, include=TRUE}
+selected_countries = c("Turkey", "Korea (the Republic of)", "Japan", "New Zealand")
+filtered_data = data[data$cname %in% selected_countries, ]
+filtered_data = filtered_data  |>
+  mutate(cname = recode(cname,
+                        "Turkey" = "Turkey",
+                        "Korea (the Republic of)" = "Korea",
+                        "Japan" = "Japan",
+                        "New Zealand" = "New Zealand"))
+
+graph2 = ggplot(filtered_data, aes(x = reorder(cname, gggi_eas), y = gggi_eas, fill = gggi_eas)) +
+  geom_bar(stat = "identity", width = 0.5) +
+  coord_flip() +
+  scale_fill_gradient(low = "lightblue", high = "darkblue", guide = "legend", name = "Educational Attainment Subindex") +
+  labs(title = "Global Gender Gap Educational Attainment Subindex",
+       x = NULL,
+       y = NULL) +
+  theme_minimal() +
+  theme(axis.text.y = element_text(size = 8, color = "black", family = "Times"),  
+        axis.text.x = element_text(size = 8, color = "black", family = "Times"),
+        plot.title = element_text(hjust = 0.5, color = "black", family = "Times"),  
+        legend.text = element_text(color = "black", family = "Times"),
+        legend.title = element_text(color = "black", family = "Times"),
+        legend.title.align = 0.5,
+        panel.grid.major = element_blank(),  
+        panel.grid.minor = element_blank(),  
+        axis.line.x = element_line(color = "black"),
+        axis.line.y = element_line(color = "black"),
+        axis.ticks.x = element_line(color = "black"), 
+        axis.ticks.length.x = unit(0.1, "cm"))
+
+print(graph2)
+```
+
+```{r, include =TRUE}
+  edua = sldata |>
+    summarise(
+      Min = min(gggi_eas, na.rm = TRUE),
+      Q1 = quantile(gggi_eas, 0.25, na.rm = TRUE),
+      Median = median(gggi_eas, na.rm = TRUE),
+      Mean = mean(gggi_eas, na.rm = TRUE),
+      Q3 = quantile(gggi_eas, 0.75, na.rm = TRUE),
+      Max = max(gggi_eas, na.rm = TRUE))
+   kable(edua, format = "markdown", caption = "Summary Statistics of Global Gender Gap Index")
+```
+
+# Discussion 
+
+- Linear Relationship between GII and GGGI: The first visual analysis revealed a clear linear relationship between the GII and GGGI, indicating that as gender inequality, as measured by the GII, increases, gender disparities across various dimensions, as measured by the GGGI, also tend to increase. This suggests that the GII can serve as a reliable predictor of gender disparities captured by the GGGI, providing valuable insights into the overall gender gap within countries.
+
+- Comparative Overview of Gender Gaps: The second visual provided a comprehensive overview of gender gaps across countries, highlighting variations in gender disparities across Economic Participation and Opportunity, Educational Attainment, Health and Survival, and Political Empowerment categories. By examining these disparities, we can better understand how different factors contribute to overall gender inequality and how they relate to the GII and GGGI.
+
+- Comparison of Educational Attainment Subindex: The third visual focused specifically on the Educational Attainment Subindex, comparing scores of selected outliers across countries. This comparison allows for the identification of specific patterns and variations in gender disparities in educational attainment, further supporting the relationship between the GII and GGGI.
+
+# Acknowledgements 
+- Quality of Government Institute. (2024). The Global Gender Gap Index 2006-2023. https://www.gu.se/en/quality-government
+

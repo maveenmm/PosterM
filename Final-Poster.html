@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<title>Gender Equality</title>
+
+
+<script src="Final-Poster_files/kePrint-0.0.1/kePrint.js"></script>
+<link href="Final-Poster_files/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+
+
+
+<!--
+Font-awesome icons ie github or twitter
+-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/brands.css" integrity="sha384-n9+6/aSqa9lBidZMRCQHTHKJscPq6NW4pCQBiMmHdUCvPN8ZOg2zJJTkC7WIezWv" crossorigin="anonymous">
+
+<!--
+Google fonts api stuff
+-->
+<link href='https://fonts.googleapis.com/css?family=Special Elite' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Rasa' rel='stylesheet'>
+
+<!--
+Here are the required style attributes for css to make this poster work :)
+-->
+<style>
+@page {
+size: 36in 48in;
+margin: 0;
+padding: 0;
+}
+body {
+margin: 0px;
+padding: 0px;
+width: 36in;
+height: 48in;
+text-align: justify;
+font-size: 45px;
+line-height: 1.05;
+}
+/* RMarkdown Class Styles */
+/* center align leaflet map,
+from https://stackoverflow.com/questions/52112119/center-leaflet-in-a-rmarkdown-document */
+.html-widget {
+margin: auto;
+position: sticky;
+margin-top: 2cm;
+margin-bottom: 2cm;
+}
+.leaflet.html-widget.html-widget-static-bound.leaflet-container.leaflet-touch.leaflet-fade-anim.leaflet-grab.leaflet-touch-drag.leaflet-touch-zoom {
+position: sticky;
+width: 100%;
+}
+pre.sourceCode.r {
+background-color: #dddddd40;
+border-radius: 4mm;
+padding: 4mm;
+width: 75%;
+margin: auto;
+margin-top: 1em;
+margin-bottom: 1em;
+/* align-items: center; */
+}
+code.sourceCode.r{
+background-color: transparent;
+font-size: 20pt;
+border-radius: 2mm;
+}
+code {
+font-size: 25pt;
+font-family: monospace;
+background-color: #00003324;
+color: #000033;
+padding: 1.2mm;
+line-height: 1;
+border-radius: 2mm;
+}
+caption {
+margin-bottom: 10px;
+font-size: 20pt;
+font-style: italic;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #00003320;
+}
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
+  border-spacing: 0;
+  font-size: 40%;
+  border-style: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 1em;
+  padding-left: 1em;
+  line-height: 1em;
+}
+table {
+  margin: auto;
+}
+th {
+  padding-left: 5mm;
+  padding-right: 5mm;
+}
+.caption {
+font-size: 20pt;
+font-style: italic;
+padding-top: 0;
+}
+.references {
+font-size: 20px;
+line-height: 90%;
+}
+/* Create three unequal columns that floats next to each other */
+.column {
+float: left;
+padding: 0px;
+}
+.outer {
+width: 36in;
+height: calc(48in *  (1 - 0.2 - 0.1 - 0.01) );
+-webkit-column-count: 3; /* Chrome, Safari, Opera */
+-moz-column-count: 3; /* Firefox */
+column-count: 3;
+-webkit-column-fill: auto;
+-moz-column-fill: auto;
+column-fill: auto;
+column-gap: 0;
+padding-left: 0cm;
+padding-right: 0cm;
+/* -webkit-column-rule-width: 50%;
+-moz-column-rule-width: 50%;
+column-rule-width: 50%; */
+-webkit-column-rule-style: none;
+-moz-column-rule-style: none;
+column-rule-style: none;
+-webkit-column-rule-color: black;
+-moz-column-rule-color: black;
+column-rule-color: black;
+background-color: #ffffff;
+font-family: Rasa;
+margin-top: calc(48in *  0.2 );
+padding-top: 1em;
+padding-bottom: 1em;
+}
+span.citation {
+  color: #000033;
+  font-weight: bold;
+}
+a {
+text-decoration: none;
+color: #000033;
+}
+#title {
+font-size: 125pt;
+text-align: left;
+margin: 0;
+line-height: 98%;
+border-bottom: 0;
+font-weight: normal;
+background: 0;
+}
+#author {
+color: #000033;
+margin: 0;
+line-height: 85%;
+font-size: 1.17em;
+}
+#affiliation {
+padding-top: 0.1em;
+color: ;
+font-style: italic;
+font-size: 25px;
+margin: 0;
+}
+sup {
+color: #000033;
+}
+.affiliation sup {
+font-size: 20px;
+}
+.author {
+text-align: left;
+}
+.author sup {
+font-size: 30px;
+}
+.author_extra {
+color: #000033;
+margin: 0;
+line-height: 85%;
+font-size: 35px;
+text-align: left;
+}
+.outer h1, h2, h3, h4, h5, h6 {
+text-align: center;
+margin: 0;
+font-weight: bold;
+}
+.section h1 {
+  text-align:center;
+  padding-bottom:5px;
+  background:
+    linear-gradient(
+      to left,
+      #ffffff 1%,
+      #ffffff 20%,
+      #00003375 33%,
+      #000033 50%,
+      #00003375 66%,
+      #ffffff 80%,
+      #ffffff 99%
+    )
+    left
+    bottom
+    #ffffff
+    no-repeat;
+  background-size:100% 5px ;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+.outer h2 {
+text-align: center;
+}
+.outer p, .level2 {
+color: #000000;
+}
+.outer ol {
+padding-left: 8%;
+padding-right: 8%;
+text-align: left;
+}
+.main {
+width: 36in;
+height: calc(48in * 0.2);
+position: absolute;
+background-color: #000033;
+color: #ffffff90;
+font-family: Special Elite;
+background-image: linear-gradient(#000033 50%,#000033);
+}
+.main strong {
+color: #ffffff;
+}
+.main strong > sup {
+color: #ffffff;
+}
+.main sup {
+color: #ffffff90;
+}
+#main-img-left {
+width: 10%;
+left: 0.5in;
+bottom: 0.2in;
+position: absolute;
+}
+#main-img-center {
+width: 10%;
+left: calc(36in * 0.45);
+bottom: 0.5in;
+position: absolute;
+}
+#main-img-right {
+width: 10%;
+right: 0.5in;
+bottom: 0.2in;
+position: absolute;
+}
+.main p {
+font-size: 150px;
+font-family: Special Elite;
+text-align: center;
+margin: 0;
+position: absolute;
+top: 50%;
+-ms-transform: translateY(-50%);
+transform: translateY(-50%);
+margin-left: 1em;
+}
+.fab {
+color: #00000030;
+font-size: 25px;
+}
+.twitter, i {
+color: #00000030;
+font-size: 35px;
+text-decoration: none;
+}
+a.email {
+text-decoration: none;
+color: #00000030;
+font-size: 35px;
+}
+.envelope {
+color: #00000030;
+font-size: 5px;
+text-decoration: none;
+}
+.poster_wrap {
+width: 36in;
+height: 48in;
+padding: 0cm;
+}
+.main_bottom {
+width: 36in;
+height: calc(48in * 0.1);
+margin-top: calc(48in * (1 - 0.1));
+position: absolute;
+background-color: #000033;
+background-image: linear-gradient(#000033 10%, #000033);
+}
+.section {
+  padding-left: 10mm;
+  padding-right: 10mm;
+}
+span > #tab:mytable {
+  font-weight: bold;
+}
+.orcid img {
+  width: 3%;
+}
+.emphasis {
+  background-color: #008080;
+  color: #ffffff;
+  border: solid #0b2045 3mm;
+  margin: 1em;
+  padding-left: 0;
+  padding-right: 0;
+}
+.emphasis h1 {
+  font-weight: bold;
+  background: none;
+  background-color: #0b2045;
+  padding-bottom: 5mm;
+  padding-top: 1mm;
+  margin-top: -1mm;
+  margin-right: -1mm;
+  margin-left: -1mm;
+}
+.emphasis blockquote {
+  border: 0;
+}
+.emphasis ol {
+  padding: 0;
+  padding-left: 8%;
+  font-size: 100%;
+  font-weight: bold;
+}
+.emphasis p {
+  color: #ffffff;
+}
+</style>
+</head>
+<body>
+
+
+<div class="poster_wrap">
+
+<div class="column outer">
+<div class="section">
+<h1 id="title"><strong>Gender Equality</strong></h1><br>
+<h3 id="author" class="author">
+
+<strong>Maveen Mallah</strong><sup> 1</sup><br>
+
+<a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:mm3664a@american.edu" class="email">mm3664a@american.edu</a> <br>
+</h3>
+
+<h5 id="author_extra", class="author_extra">
+</h5>
+
+
+<p id="affiliation" class="affiliation">
+<sup>1</sup> School of International Service (SIS), American University
+</p>
+</div>
+
+<div id="abstract" class="section level1">
+<h1>Abstract</h1>
+<p><strong>Research Question:</strong> Does the Gender Inequality Index (GII) serve as a reliable predictor of gender disparities, as measured by the Global Gender Gap Index (GGGI), across countries?</p>
+<p><strong>Methodology:</strong> This study utilized data from the Quality of Government Institute and the United Nations Development Program to investigate gender inequality through the Global Gender Gap Index (GGGI). The dataset comprised 153 countries, with a random sample of 38 countries being analyzed. Descriptive statistics and visualizations were employed to explore the distribution and trends in both the Gender Inequality Index (GII) and the Global Gender Gap Index (GGGI).</p>
+<p><strong>Major Findings:</strong> The findings from these visuals collectively support the notion that the Gender Inequality Index (GII) serves as a reliable predictor of gender disparities, as measured by the Global Gender Gap Index (GGGI), across countries. The linear relationship observed, along with the insights gained from the comparative overview and specific examination of educational attainment disparities, reinforces the significance of the GII in understanding and addressing gender inequality on a global scale.</p>
+</div>
+<div id="methods-data" class="section level1">
+<h1>Methods/ Data</h1>
+<ul>
+<li>Overall, the study employed a combination of data analysis techniques, including descriptive statistics and data visualization, to examine gender inequality using the GGGI across selected countries. The findings aimed to contribute to a better understanding of the current state of gender equality and inform efforts to address gender disparities in various domains.</li>
+</ul>
+</div>
+<div id="results" class="section level1">
+<h1>Results</h1>
+<p><strong>Gender Inequality Index (GII) and the Global Gender Gap Index (GGGI)</strong></p>
+<ul>
+<li><p>The Gender Inequality Index (GII) variable “gii_gii” quantifies gender disparities in reproductive health, empowerment, and economic status, indicating greater inequality with higher values. The Global Gender Gap Index (GGGI) variable “ggi_ggi” assesses gender disparities across Economic Participation and Opportunity, Educational Attainment, Health and Survival, and Political Empowerment categories.</p></li>
+<li><p>The graph displays a linear relationship between “gii_gii” and “ggi_ggi”, suggesting that as gender inequality measured by GII increases, gender disparities measured by GGGI also tend to increase.</p></li>
+</ul>
+<p><img src="Final-Poster_files/figure-html/unnamed-chunk-5-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<table class="table table-striped table-hover table-condensed table-responsive" style="color: black; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-6">Table 1: </span>Linear Regression Summary
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+Std. Error
+</th>
+<th style="text-align:right;">
+t value
+</th>
+<th style="text-align:right;">
+Pr(&gt;|t|)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:right;">
+0.7864537
+</td>
+<td style="text-align:right;">
+0.0130623
+</td>
+<td style="text-align:right;">
+60.20775
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+gii_gii
+</td>
+<td style="text-align:right;">
+-0.2483188
+</td>
+<td style="text-align:right;">
+0.0919502
+</td>
+<td style="text-align:right;">
+-2.70058
+</td>
+<td style="text-align:right;">
+0.0104829
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Global Gender Gap Index (GGGI):</strong></p>
+<ul>
+<li><p>The Global Gender Gap Index (GGGI) utilizes four variables, including Economic Participation and Opportunity “gggi_pos”, Educational Attainment “gggi_eas”, Health and Survival “gggi_hss”, and Political Empowerment “gggi_pes”, to assess country progress towards gender parity across thematic dimensions.</p></li>
+<li><p>The graph provides a comparative overview of gender gaps across countries, illustrating variations in gender disparities in Economic Participation and Opportunity, Educational Attainment, Health and Survival, and Political Empowerment categories.</p></li>
+</ul>
+<p><img src="Final-Poster_files/figure-html/unnamed-chunk-7-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<table>
+<caption><span id="tab:unnamed-chunk-8">Table 2: </span>Summary Statistics of Global Gender Gap Index</caption>
+<thead>
+<tr class="header">
+<th align="right">Min</th>
+<th align="right">Q1</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">Q3</th>
+<th align="right">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0.638</td>
+<td align="right">0.72175</td>
+<td align="right">0.7655</td>
+<td align="right">0.7592105</td>
+<td align="right">0.78875</td>
+<td align="right">0.892</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Educational Attainment Subindex:</strong></p>
+<ul>
+<li><p>The Educational Attainment Subindex, represented by the variable “ggi_eas”, highlights the disparity between women and men in current access to education, including ratios of women to men in primary-, secondary-, and tertiary-level education. Additionally, it provides a long-term perspective on a country’s ability to educate both genders equally through the ratio of female literacy rate to male literacy rate.</p></li>
+<li><p>The graph compares the Educational Attainment Subindex scores of selected outliers (Turkey, Korea, Japan, and New Zealand), allowing for easy identification of variations and patterns in gender disparities in educational attainment across these countries.</p></li>
+</ul>
+<p><img src="Final-Poster_files/figure-html/unnamed-chunk-9-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<table>
+<caption><span id="tab:unnamed-chunk-10">Table 3: </span>Summary Statistics of Global Gender Gap Index</caption>
+<thead>
+<tr class="header">
+<th align="right">Min</th>
+<th align="right">Q1</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">Q3</th>
+<th align="right">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0.975</td>
+<td align="right">0.997</td>
+<td align="right">1</td>
+<td align="right">0.9968421</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="discussion" class="section level1">
+<h1>Discussion</h1>
+<ul>
+<li><p>Linear Relationship between GII and GGGI: The first visual analysis revealed a clear linear relationship between the GII and GGGI, indicating that as gender inequality, as measured by the GII, increases, gender disparities across various dimensions, as measured by the GGGI, also tend to increase. This suggests that the GII can serve as a reliable predictor of gender disparities captured by the GGGI, providing valuable insights into the overall gender gap within countries.</p></li>
+<li><p>Comparative Overview of Gender Gaps: The second visual provided a comprehensive overview of gender gaps across countries, highlighting variations in gender disparities across Economic Participation and Opportunity, Educational Attainment, Health and Survival, and Political Empowerment categories. By examining these disparities, we can better understand how different factors contribute to overall gender inequality and how they relate to the GII and GGGI.</p></li>
+<li><p>Comparison of Educational Attainment Subindex: The third visual focused specifically on the Educational Attainment Subindex, comparing scores of selected outliers across countries. This comparison allows for the identification of specific patterns and variations in gender disparities in educational attainment, further supporting the relationship between the GII and GGGI.</p></li>
+</ul>
+</div>
+<div id="acknowledgements" class="section level1">
+<h1>Acknowledgements</h1>
+<ul>
+<li>Quality of Government Institute. (2024). The Global Gender Gap Index 2006-2023. <a href="https://www.gu.se/en/quality-government" class="uri">https://www.gu.se/en/quality-government</a></li>
+</ul>
+</div>
+
+</div>
+<div class="main">
+<p>The Global Gender Gap Index 2006-2023</p>
+</div>
+<div class="main_bottom">
+<img id="main-img-left" src=>
+<img id="main-img-center" src=https://www.american.edu/ucm/images/AU_stacked_logo.png>
+<img id="main-img-right" src=>
+</div>
+</div>
+
+
+
+</body>
+</html>
