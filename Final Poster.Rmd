@@ -173,9 +173,9 @@ print(graph3)
 
 **Educational Attainment Subindex:**
 
-- The Educational Attainment Subindex, represented by the variable "ggi_eas", highlights the disparity between women and men in current access to education, including ratios of women to men in primary-, secondary-, and tertiary-level education. Additionally, it provides a long-term perspective on a country's ability to educate both genders equally through the ratio of female literacy rate to male literacy rate.
+- The Educational Attainment Subindex, represented by the variable "ggi_eas", highlights the disparity between women and men in current access to education, including ratios of women to men in primary-, secondary-, and tertiary-level education.
 
-- The graph compares the Educational Attainment Subindex scores of selected outliers (Turkey, Korea, Japan, and New Zealand), allowing for easy identification of variations and patterns in gender disparities in educational attainment across these countries.
+- The graph compares the Educational Attainment Subindex scores of selected outliers, allowing for easy identification of variations and patterns in gender disparities in educational attainment across these countries.
 
 ```{r, include=TRUE}
 selected_countries = c("Turkey", "Korea (the Republic of)", "Japan", "New Zealand")
