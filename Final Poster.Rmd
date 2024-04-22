@@ -220,16 +220,16 @@ print(graph2)
       Mean = mean(gggi_eas, na.rm = TRUE),
       Q3 = quantile(gggi_eas, 0.75, na.rm = TRUE),
       Max = max(gggi_eas, na.rm = TRUE))
-   kable(edua, format = "markdown", caption = "Summary Statistics of Global Gender Gap Index")
+   kable(edua, format = "markdown", caption = "Summary Statistics of Educational Attainment Subindex")
 ```
 
 # Discussion 
 
-- Linear Relationship between GII and GGGI: The first visual analysis revealed a clear linear relationship between the GII and GGGI, indicating that as gender inequality, as measured by the GII, increases, gender disparities across various dimensions, as measured by the GGGI, also tend to increase. This suggests that the GII can serve as a reliable predictor of gender disparities captured by the GGGI, providing valuable insights into the overall gender gap within countries.
+- **Linear Relationship between GII and GGGI:** The first visual analysis revealed a clear linear relationship between the GII and GGGI, indicating that as gender inequality, as measured by the GII, increases, gender disparities across various dimensions, as measured by the GGGI, also tend to increase. This suggests that the GII can serve as a reliable predictor of gender disparities captured by the GGGI, providing valuable insights into the overall gender gap within countries.
 
-- Comparative Overview of Gender Gaps: The second visual provided a comprehensive overview of gender gaps across countries, highlighting variations in gender disparities across Economic Participation and Opportunity, Educational Attainment, Health and Survival, and Political Empowerment categories. By examining these disparities, we can better understand how different factors contribute to overall gender inequality and how they relate to the GII and GGGI.
+- **Comparative Overview of Gender Gaps:** The second visual provided a comprehensive overview of gender gaps across countries, highlighting variations in gender disparities across Economic Participation and Opportunity, Educational Attainment, Health and Survival, and Political Empowerment categories. By examining these disparities, we can better understand how different factors contribute to overall gender inequality and how they relate to the GII and GGGI.
 
-- Comparison of Educational Attainment Subindex: The third visual focused specifically on the Educational Attainment Subindex, comparing scores of selected outliers across countries. This comparison allows for the identification of specific patterns and variations in gender disparities in educational attainment, further supporting the relationship between the GII and GGGI.
+- **Comparison of Educational Attainment Subindex:** The third visual focused specifically on the Educational Attainment Subindex, comparing scores of selected outliers across countries. This comparison allows for the identification of specific patterns and variations in gender disparities in educational attainment, further supporting the relationship between the GII and GGGI.
 
 # Acknowledgements 
 - Quality of Government Institute. (2024). The Global Gender Gap Index 2006-2023. https://www.gu.se/en/quality-government
